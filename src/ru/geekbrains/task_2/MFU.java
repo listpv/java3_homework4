@@ -31,7 +31,7 @@ public class MFU
     }
 
 
-    public void doPrinter()
+    public synchronized void doPrinter()
     {
         System.out.println("Сотрудник " + (Thread.currentThread().getId() - 11) + " подошёл к принтеру.");
         if(!printer && !xerox)
@@ -60,7 +60,7 @@ public class MFU
             helpScanner();
         }
     }
-    public void doXerox()
+    public synchronized void doXerox()
     {
         System.out.println("Сотрудник " + (Thread.currentThread().getId() - 11) + " подошёл к ксероксу.");
         while (scanner || xerox || printer) {}
